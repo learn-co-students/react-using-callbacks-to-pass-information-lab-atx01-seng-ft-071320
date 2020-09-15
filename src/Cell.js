@@ -8,10 +8,24 @@ export default class Cell extends Component {
       color: this.props.color
     }
   }
-  
+  genRow = (vals) => (
+    vals.map((val, idx) => <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />)
+  )
+
+  handleClick = () => {
+    this.setState({
+      color: this.props.selectedColor
+    })
+  }
+ 
+
+
+
   render() {
     return (
-      <div className="cell" style={{backgroundColor: this.state.color}}>
+      <div onClick={this.handleClick} className="cell"
+           style={{backgroundColor: this.state.color}}
+      >
       </div>
     )
   }
